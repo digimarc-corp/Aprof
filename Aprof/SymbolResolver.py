@@ -1,6 +1,8 @@
 import re
 import subprocess
 
+from Message import *
+
 class SymbolResolver:
 	def __init__(self, remotepath, modcache):
 		self._remotepath = remotepath

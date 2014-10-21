@@ -6,6 +6,7 @@ from Module import *
 from ModCache import *
 from Demangler import *
 from HitCounter import *
+from Message import *
 
 class Profiler:
 	def __init__(self, localfiles, profiledatafile):

@@ -1,5 +1,7 @@
 import subprocess
 
+from Message import *
+
 class LineResolver:
 	def __init__(self, remotepath, modcache):
 		self._remotepath = remotepath

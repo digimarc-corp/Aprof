@@ -1,6 +1,8 @@
 import os
 import subprocess
 
+from Message import *
+
 class ModCache:
 	def __init__(self, localfiles=[]):
 		# If .aprof_cache directory doesn't exist, create it
