@@ -1,8 +1,6 @@
 import sys
 import glob
 
-sys.path.append('.')
-
 from Aprof.Profiler import *
 
 localfiles = []
