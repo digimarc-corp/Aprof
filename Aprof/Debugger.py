@@ -44,17 +44,17 @@ class Debugger:
 			offset = mod.textoffset
 			if base is not None and offset is not None:
 				print >> cmdfile, 'add-symbol-file %s 0x%x' % (localpath.replace('\\', '/'), base + offset)
+		print >> cmdfile, 'target remote :9999'
 		cmdfile.close()
 		# Run gdbserver
 		self._run_gdbserver()
 		# Launch gdb, passing it the cmdfile
-		args = ['cmd', '/k', 'start', 'arm-linux-androideabi-gdb', '-x', self._tmpcommandfile]
+		args = ['cmd', '/C', 'start', '/WAIT', 'arm-linux-androideabi-gdb', '-x', self._tmpcommandfile]
 		self._gdb_process = subprocess.Popen(args)
 		self._gdb_process.wait()
 		
 	def close(self):
 		if self._gdbserver_process is not None:
-			self._gdbserver_process.terminate()
 			self._gdbserver_process.wait()
 		if self._tmpcommandfile is not None:
 			os.unlink(self._tmpcommandfile)
