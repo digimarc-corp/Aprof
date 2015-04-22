@@ -24,7 +24,7 @@ class SymbolResolver:
 			fields = symre.split(sl)
 			if len(fields) == 8 and fields[0] != 'Num:':
 				symaddr = int(fields[1], 16)
-				symsize = int(fields[2])
+				symsize = int(fields[2], 0)
 				symname = fields[7]
 				self._symbols.append((symaddr, symsize, symname))
 		self._ok = True
