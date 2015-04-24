@@ -10,6 +10,8 @@
 #include <asm/sigcontext.h>       /* for sigcontext */
 #include <asm/signal.h>           /* for stack_t */
 
+#include <android/log.h>
+
 namespace GUM {
 
 int Aprof::_dumpfile = -1;
@@ -31,6 +33,7 @@ Aprof::~Aprof()
 
 bool Aprof::Begin(const char* outfilename)
 {
+    __android_log_print(ANDROID_LOG_INFO, "Aprof", "Aprof starting up");
 	// If already profiling, end old session
 	if (_dumpfile >= 0)
 	{
@@ -41,8 +44,11 @@ bool Aprof::Begin(const char* outfilename)
 	_dumpfile = open(outfilename, O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	if (_dumpfile < 0)
 	{
+        __android_log_print(ANDROID_LOG_INFO, "Aprof", "Failed to open %s", outfilename);
 		return false;
 	}
+
+    __android_log_print(ANDROID_LOG_INFO, "Aprof", "Opened %s", outfilename);
 
 	// Write version 1 PROFDAT file
 	
@@ -82,6 +88,7 @@ bool Aprof::Begin(const char* outfilename)
 
 bool Aprof::End()
 {
+    __android_log_print(ANDROID_LOG_INFO, "Aprof", "Aprof shutting down");
 	// Disable the profile timer
 	itimerval itv;
 	itv.it_interval.tv_sec = 0;

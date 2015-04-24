@@ -5,6 +5,7 @@ SRC_ROOT			:= ..
 
 LOCAL_MODULE		:= Aprof
 LOCAL_SRC_FILES		:=	$(SRC_ROOT)/Aprof.cpp
+LOCAL_LDFLAGS       += -llog
 
 include $(BUILD_SHARED_LIBRARY)
 
