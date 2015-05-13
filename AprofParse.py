@@ -110,7 +110,7 @@ def ReadSymTab(fn):
 				fields = splitter.split(line)
 				if len(fields) == 8:
 					addr = long(fields[1], 16)
-					size = long(fields[2])
+					size = long(fields[2],0)
 					name = fields[7]
 					syms.append((addr, size, name))
 	syms.sort()
