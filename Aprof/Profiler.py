@@ -153,6 +153,8 @@ class Profiler:
 					continue
 				if modpath == '[vectors]':
 					continue
+				if modpath == '[sigpage]':
+					continue
 				if modpath not in self._modules:
 					self._modules[modpath] = Module(modpath, self._modcache)
 				self._modules[modpath].add_map(begin, end, offset, perm)
